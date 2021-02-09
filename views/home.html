@@ -1,0 +1,17 @@
+<div ng-include="'views/template/upload-file.html'"></div>
+<div>
+    <!-- Root Context DropDown Menu -->
+    <div ng-include="'views/template/root-context-menu.html'"></div>
+
+    <!-- Context DropDown Menu -->
+    <div ng-include="'views/template/global-context-menu.html'"></div>
+
+    <div class="wrapper scroll-support" ng-click="hideConfig()" ng-class="{'panel-collapsed':sidebarCollapse}">
+        <div ng-include="'views/template/header.html'"></div>        
+        <div ng-include="'views/template/sidebar.html'"></div>
+        <div class="panel middle scroll-support" ng-class="{'panel-collapsed':sidebarCollapse}">
+            <render-tree tree-data="models.tree[0]" on-node-click="onNodeClick" configure="configure" drop="drop" on-show="onShow" on-db-click="onDbClick" condition-config="conditionConfig"></render-tree>
+            <div ng-include="'views/template/footer.html'"></div>
+        </div>
+    </div>
+</div>

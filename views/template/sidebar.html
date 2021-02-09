@@ -1,0 +1,15 @@
+<div class="panel left scroll-support" ng-class="{'panel-collapsed':sidebarCollapse}">
+    <div class="preset-selection">
+        <div class="preset-group">
+            <h4 class="g-top-m0 text-center">Group 1</h4>
+            <div ng-repeat="item in models.preset.group1" ng-include="'views/template/sidebar-template.html'" class="item">
+            </div>
+        </div>
+
+        <div class="preset-group">
+            <h4 class="g-top-m0 text-center">Group 2</h4>
+            <div ng-repeat="item in models.preset.group2" ng-include="'views/template/sidebar-template.html'" class="item">
+            </div>
+        </div>
+    </div>
+</div>

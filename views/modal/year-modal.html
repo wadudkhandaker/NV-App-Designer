@@ -1,0 +1,181 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Year</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-2"><label for="checkFile" class="control-label">Check File</label></div>
+            <div class="col-md-8" ng-if="!node.data.type6.variable">
+                <input type="text" ng-model="node.data.type6.checkFile" class="form-control" placeholder="Enter Value">
+            </div>
+            <div class="col-md-8" ng-if="node.data.type6.variable">
+                <!--select name="variableSelect" class="form-control" ng-model="node.data.type6.variableSelect" ng-selected="node.data.type6.variableSelect">
+                    <option value="">Select</option>
+                    <option ng-repeat="list in yearFileVarList" value="{{list.variable}}" ng-selected="node.data.type6.variableSelect == list.variable">{{list.variable}}</option>
+                </select-->
+
+                <div class="input-group">
+                    <ui-select ng-model="node.data.type6.variableSelect">
+                        <ui-select-match placeholder="Select or Search">{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="item in yearFileVarList | filter: $select.search" refresh="checkNewVarEntryForCheckFile($select.items.length, $select.search)">
+                            <span ng-bind-html="item | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-disabled="enableNewVarEntryButtonForCheckFile" ng-click="showNewVarEntrySectionForCheckFile()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="checkbox">
+                    <label>
+                        <input ng-model="node.data.type6.variable" type="checkbox">
+                        <span class="box-relative checkbox-label-fix">Variable</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="checkbox">
+                <div class="col-md-2">
+                    <label>
+                        <input ng-model="node.data.type6.action" type="checkbox">
+                        <span class="box-relative checkbox-label-fix">Action</span>
+                    </label>
+                </div>
+                <div class="col-md-8" ng-if="node.data.type6.action">
+                    <!--select name="actionSelect" class="form-control" ng-model="node.data.type6.actionSelect" ng-selected="node.data.type6.actionSelect">
+                        <option value="">Select</option>
+                        <option ng-repeat="s_list in yearActionVarList" value="{{s_list.variable}}" ng-selected="node.data.type6.actionSelect == s_list.variable">{{s_list.variable}}</option>
+                    </select-->
+
+                    <div class="input-group">
+                        <ui-select ng-model="node.data.type6.actionSelect">
+                            <ui-select-match placeholder="Select or Search">{{$select.selected}}</ui-select-match>
+                            <ui-select-choices repeat="item in yearActionVarList | filter: $select.search" refresh="checkNewVarEntryForAction($select.items.length, $select.search)">
+                                <span ng-bind-html="item | highlight: $select.search"></span>
+                            </ui-select-choices>
+                        </ui-select>
+
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-disabled="enableNewVarEntryButtonForAction" ng-click="showNewVarEntrySectionForAction()">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="col-md-12" ng-show="showNewVarEntryBlockForCheckFile">
+                <hr>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addVar" class="control-label">Identificator</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <input type="text" ng-model="addNewEntryForCheckFile.variable" class="form-control" placeholder="Enter Value">
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addVar" class="control-label">Identificator</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <label>
+                        <input name="addType" ng-model="addNewEntryForCheckFile.type" type="radio" value="str">
+                        <span class="box-relative checkbox-label-fix">String</span>
+                    </label>
+                    <div class="clearfix"></div>
+
+                    <label>
+                        <input name="addType" ng-model="addNewEntryForCheckFile.type" type="radio" value="int">
+                        <span class="box-relative checkbox-label-fix">Integer</span>
+                    </label>
+                    <div class="clearfix"></div>
+
+                    <label>
+                        <input name="addType" ng-model="addNewEntryForCheckFile.type" type="radio" value="con">
+                        <span class="box-relative checkbox-label-fix">Constant</span>
+                    </label>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addComment" class="control-label">Comment</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <input type="text" ng-model="addNewEntryForCheckFile.details" class="form-control" placeholder="Enter Details">
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-12 text-right gap-left-right-p0">
+                    <button class="btn" type="button" ng-click="addNewVarEntryForCheckFile(addNewEntryForCheckFile)">Save</button>
+                    <button class="btn" type="button" ng-click="hideNewVarEntrySectionForCheckFile()">Close</button>
+                </div>
+                <div class="clearfix"></div>
+
+                <hr>
+            </div>
+
+            <div class="col-md-12" ng-show="showNewVarEntryBlockForAction">
+                <hr>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addVar" class="control-label">Identificator</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <input type="text" ng-model="addNewEntryForAction.variable" class="form-control" placeholder="Enter Value">
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addVar" class="control-label">Identificator</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <label>
+                        <input name="addType" ng-model="addNewEntryForAction.type" type="radio" value="str">
+                        <span class="box-relative checkbox-label-fix">String</span>
+                    </label>
+                    <div class="clearfix"></div>
+
+                    <label>
+                        <input name="addType" ng-model="addNewEntryForAction.type" type="radio" value="int">
+                        <span class="box-relative checkbox-label-fix">Integer</span>
+                    </label>
+                    <div class="clearfix"></div>
+
+                    <label>
+                        <input name="addType" ng-model="addNewEntryForAction.type" type="radio" value="con">
+                        <span class="box-relative checkbox-label-fix">Constant</span>
+                    </label>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addComment" class="control-label">Comment</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <input type="text" ng-model="addNewEntryForAction.details" class="form-control" placeholder="Enter Details">
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-12 text-right gap-left-right-p0">
+                    <button class="btn" type="button" ng-click="addNewVarEntryForAction(addNewEntryForAction)">Save</button>
+                    <button class="btn" type="button" ng-click="hideNewVarEntrySectionForAction()">Close</button>
+                </div>
+                <div class="clearfix"></div>
+
+                <hr>
+            </div>
+        </div>
+        <fieldset class="fieldset-box">
+            <legend class="fieldset-border">Console output</legend>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="text" ng-model="node.data.type6.consoleOutput" class="form-control" id="inputEmail3">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn" type="button" ng-click="ok()">OK</button>
+</div>

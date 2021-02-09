@@ -1,0 +1,119 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">Get Key</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-4"><label for="maxKey" class="control-label">Max Keys</label></div>
+            <div class="col-md-8">
+                <input type="text" ng-model="node.data.type6.maxKey" class="form-control" placeholder="Enter Value">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-4"><label for="variable" class="control-label">Variable</label></div>
+            <div class="col-md-8">
+                <!--select name="variable" class="form-control" ng-model="node.data.type6.variable" ng-selected="node.data.type6.variable">
+                    <option value="">Select</option>
+                    <option ng-repeat="list in getKeyVarList" value="{{list.variable}}" ng-selected="node.data.type6.variable == list.variable">{{list.variable}}</option>
+                </select-->
+
+                <div class="input-group">
+                    <ui-select ng-model="node.data.type6.variable">
+                        <ui-select-match placeholder="Select or Search">{{$select.selected}}</ui-select-match>
+                        <ui-select-choices repeat="item in getKeyVarList | filter: $select.search" refresh="checkNewVarEntry($select.items.length, $select.search)">
+                            <span ng-bind-html="item | highlight: $select.search"></span>
+                        </ui-select-choices>
+                    </ui-select>
+
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-disabled="enableNewVarEntryButton" ng-click="showNewVarEntrySection()">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-md-12" ng-show="showNewVarEntryBlock">
+                <hr>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addVar" class="control-label">Identificator</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <input type="text" ng-model="addNewEntry.variable" class="form-control" placeholder="Enter Value">
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addVar" class="control-label">Identificator</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <label>
+                        <input name="addType" ng-model="addNewEntry.type" type="radio" value="str">
+                        <span class="box-relative checkbox-label-fix">String</span>
+                    </label>
+                    <div class="clearfix"></div>
+
+                    <label>
+                        <input name="addType" ng-model="addNewEntry.type" type="radio" value="int">
+                        <span class="box-relative checkbox-label-fix">Integer</span>
+                    </label>
+                    <div class="clearfix"></div>
+
+                    <label>
+                        <input name="addType" ng-model="addNewEntry.type" type="radio" value="con">
+                        <span class="box-relative checkbox-label-fix">Constant</span>
+                    </label>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-4 gap-left-right-p0 gap-bottom-m10"><label for="addComment" class="control-label">Comment</label></div>
+                <div class="col-md-8 gap-left-right-p0 gap-bottom-m10">
+                    <input type="text" ng-model="addNewEntry.details" class="form-control" placeholder="Enter Details">
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="col-md-12 text-right gap-left-right-p0">
+                    <button class="btn" type="button" ng-click="addNewVarEntry(addNewEntry)">Save</button>
+                    <button class="btn" type="button" ng-click="hideNewVarEntrySection()">Close</button>
+                </div>
+                <div class="clearfix"></div>
+
+                <hr>
+            </div>
+        </div>
+        <fieldset class="fieldset-box">
+            <legend class="fieldset-border">Options</legend>
+            <div class="checkbox">
+                <div class="col-md-6 gap-left-right-p0">
+                    <label>
+                        <input ng-model="node.data.type6.timeout" type="checkbox">
+                        <span class="box-relative checkbox-label-fix">Timeout (1/10s)</span>
+                    </label>
+                </div>
+                <div class="col-md-6 gap-left-right-p0" ng-if="node.data.type6.timeout">
+                    <input type="text" ng-model="node.data.type6.timeoutDuration" class="form-control" placeholder="Enter Duration Value">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="checkbox">
+                <label>
+                    <input ng-model="node.data.type6.continueAfterHangup" type="checkbox">
+                    <span class="box-relative checkbox-label-fix">Continue after hangup</span>
+                </label>
+            </div>
+            <div class="clearfix"></div>
+        </fieldset>
+        <fieldset class="fieldset-box">
+            <legend class="fieldset-border">Console output</legend>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <input type="text" ng-model="node.data.type6.consoleOutput" class="form-control" id="inputEmail3">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn" type="button" ng-click="ok()">OK</button>
+</div>

@@ -1,0 +1,45 @@
+<div class="dropdown position-fixed z-index-4" id="menu">
+    <ul class="dropdown-menu context-menu" role="menu">
+        <li>
+            <a class="pointer" role="menuitem" tabindex="1" ng-click="selectModalType(context.child)" ng-class="{'disable-txt': disableConfig}">
+                <i class="fa fa-cog gap-right-m5"></i>
+                <span>Config</span>
+            </a>
+        </li>
+        <li>
+            <a class="pointer" role="menuitem" tabindex="2"
+                ng-click="copyNode()" ng-class="{'disable-txt': disableCopy}">
+                <i class="fa fa-copy gap-right-m5"></i>
+                Copy
+            </a>
+        </li>
+        <li>
+            <a class="pointer" role="menuitem" tabindex="2"
+                ng-click="pasteNode()" ng-class="{'disable-txt': disablePaste}">
+                <i class="fa fa-paste gap-right-m5"></i>
+                Paste
+            </a>
+        </li>
+        <li>
+            <a class="pointer" role="menuitem" tabindex="3"
+                ng-click="removeNode()" ng-class="{'disable-txt': disableRemove}">
+                <i class="fa fa-remove gap-right-m5"></i>
+                Remove
+            </a>
+        </li>
+        <li>
+            <a class="pointer" role="menuitem" tabindex="4"
+                ng-click="collapseChild()" ng-class="{'disable-txt': disableCollapse}">
+                <i class="fa fa-minus-square gap-right-m5"></i>
+                Collapse
+            </a>
+        </li>
+        <li>
+            <a class="pointer" role="menuitem" tabindex="5"
+                ng-click="expandChild()" ng-class="{'disable-txt': disableExpand}">
+                <i class="fa fa-plus-square gap-right-m5"></i>
+                Expand
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,33 @@
+<div class="dropdown position-fixed z-index-3" id="root-menu">
+    <ul class="dropdown-menu context-menu" role="root-menu">
+        <li>
+            <a class="pointer" role="menuitem" tabindex="1" data-ng-click="save( 'tree.json' );">
+                <i class="fa fa-save gap-right-m5"></i>
+                Download .JSON
+            </a>
+        </li>
+        <li>
+            <a class="pointer" role="menuitem" tabindex="2" data-ng-click="saveNvt();">
+                <i class="fa fa-save gap-right-m5"></i>
+                Download .NVT
+            </a>
+        </li>
+        <li>
+            <div class="gap-p10">
+                <div class="box-relative upload-btn">
+                    <i class="fa fa-upload gap-right-m5"></i>
+                    <span class="display-inline" ng-show="!showFileName" ng-click="uploadFile($event)">Upload file</span>
+                    <span ng-repeat="item in uploader.queue" ng-show="showFileName">
+                        <span class="display-inline ellipsis filename-ellipsis">{{ item.file.name }} </span>
+                        <i class="fa fa-remove file-delete" ng-click="item.remove();hideProgress()"></i>
+                    </span>
+                </div>
+                <div class="progress" id="progress" ng-show="fileProgress" ng-style="{ 'width': uploader.progress + '%' }">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                        <span class="sr-only"></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

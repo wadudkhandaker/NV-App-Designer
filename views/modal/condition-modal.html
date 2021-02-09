@@ -1,0 +1,40 @@
+<div class="modal-header">
+    <h3 class="modal-title">Case</h3>
+</div>
+<div class="modal-body">
+    <form class="form-horizontal">
+        <div class="checkbox row">
+
+            <div class="col-sm-6">
+                <label>
+                    <input type="radio" name="looptype" value="?" ng-model="node.enterCondition">
+                    <span class="checkbox-label-fix popup-text">Access code</span>
+                </label>
+            </div>
+            <div class="col-sm-6">
+                <input type="text" ng-show="node.enterCondition == '?'" ng-model="conditiontext" class="form-control">
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-sm-6">
+                <label>
+                    <input type="radio" name="looptype" value="empty" ng-model="node.enterCondition">
+                    <span class="checkbox-label-fix popup-text">Empty</span>
+                </label>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="col-sm-6">
+                <label>
+                    <input type="radio" name="looptype" value="ELSE" ng-model="node.enterCondition">
+                    <span class="checkbox-label-fix popup-text">Else access</span>
+                </label>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn" type="button" ng-click="cancel()">Cancel</button>
+    <button class="btn" type="button" ng-click="ok()">OK</button>
+</div>

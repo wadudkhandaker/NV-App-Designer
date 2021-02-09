@@ -1,0 +1,21 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">NV Designer</h3>
+</div>
+<div class="modal-body">
+    <h4>The program dosen't exist. Do you want to create?</h4>
+    <form>
+        <label for="designer" ng-click="designerWindow()">
+            <input type="radio" name="gender" value="male" id="designer" class="box-relative" style="top:2px">
+            <span class="pointer">Create dfgh.NDV (Designer)</span>
+        </label>
+        <br />
+        <label for="script" ng-click="scriptWindow()">
+            <input type="radio" name="gender" value="female" id="script" class="box-relative" style="top:2px">
+            <span class="pointer">Create dfgh.NVT (Script)</span>
+        </label>
+    </form>
+</div>
+<div class="modal-footer">
+    <a class="btn btn-default" ng-click="cancel()">Cancel</a>
+    <a class="btn btn-default" href="{{targetUrl}}" target="_blank" ng-click="ok()">Ok</a>
+</div>
